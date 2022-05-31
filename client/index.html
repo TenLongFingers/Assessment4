@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Back End Assessment</title>
-  </head>
-  <body class="container">
-    <button id="complimentButton">Get a compliment</button>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
-    
-  </body>
+<head>
+  <title>Back End Assessment</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="container">
+  <button id="complimentButton">Get a compliment</button>
+  <button id="fortuneButton">Pick a fortune</button>
+
+  <div id="decision-maker">
+    <h4>Decision maker!</h4>
+    <p>Having a hard time making a decision? Ask the oracle a yes or no question!</p>
+    <p>(Disclaimer: You don't have to obey the
+      oracle perfectly, but if it makes a decision for you, and you find yourself disappointed, then it successfully
+      helped you make your decision!)
+    </p>
+
+
+    <div id="goals">
+
+    </div>
+
+    <div class="box-canvas">
+      <div class="ruffle left"></div>
+      <div class="ruffle right"></div>
+      <div class="tabletop">
+
+      </div>
+      <div class="ball">
+      </div>
+      <div class="stand"></div>
+    </div>
+    <div id="message"></div>
+    <button class="oracle-btn" onclick="askOracle()">Decide for me</button>
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
 </html>
