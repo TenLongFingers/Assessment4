@@ -36,6 +36,15 @@
     <div id="message"></div>
     <button class="oracle-btn" onclick="askOracle()">Decide for me</button>
   </div>
+  <div id="pomodoro-timer">
+    <h4>Production timer</h4>
+    <p>This timer uses the Pomodoro technique to help you be productive. Focus on your work for 20 minutes, then take a
+      break for 10.</p>
+    <button onclick="pomodoroWork(prodMins)">Start work session</button>
+    <progress id="progress-bar-work" value="0" max="0" style="width:50%"></progress>
+    <button onclick="pomodoroRest(prodMins)">Take a break</button>
+    <progress id="progress-bar-rest" value="0" max="0" style="width:25%"></progress>
+  </div>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="main.js"></script>

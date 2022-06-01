@@ -47,3 +47,35 @@ const getDecision = () => {
 };
 
 console.log(getDecision());
+
+let seconds = 0;
+let prodMins = 20;
+let restMins = 10;
+
+let pomodoroWork = (prodMins) => {
+  document.getElementById("progress-bar-work").max = prodMins * 60;
+  seconds = prodMins * 60 || 0;
+  interval = setInterval(function () {
+    seconds--;
+    if (!seconds) {
+      clearInterval(interval);
+      alert("Done! Now take a break for 5 minutes.");
+    }
+    document.getElementById("progress-bar-work").value = seconds;
+  }, 1000);
+};
+
+let pomodoroRest = (restMins) => {
+  document.getElementById("progress-bar-rest").max = restMins * 60;
+  seconds = restMins * 60 || 0;
+  interval = setInterval(function () {
+    seconds--;
+    if (!seconds) {
+      clearInterval(interval);
+      alert(
+        "Hope you had a good break! Now it's back to work, and let's have a good session!"
+      );
+    }
+    document.getElementById("progress-bar-rest").value = seconds;
+  }, 1000);
+};
