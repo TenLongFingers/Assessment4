@@ -1,3 +1,5 @@
+const goals = require("./goals.json");
+let globalID = 4;
 module.exports = {
   getCompliment: (req, res) => {
     const compliments = [
@@ -28,5 +30,44 @@ module.exports = {
     let randomFortune = fortunes[randomIndex];
 
     res.status(200).send(randomFortune);
+  },
+
+  // decision helper
+
+  getDecision: (req, res) => {
+    const decisionsArr = [
+      `Most likely.`,
+      `Oh, for sure!`,
+      `Yes.`,
+      `Yeah, that sounds fun!`,
+      `Oh dude that sounds dope, do it do it do it!!`,
+      `That's a no from me, my guy.`,
+      `No.`,
+      `Probably not.`,
+      `Maybe later down the line.`,
+      `Yeah no don't do that.`,
+    ];
+    let randomIndex = Math.floor(Math.random() * decisionsArr.length);
+    let randomDecision = decisionsArr[randomIndex];
+
+    res.status(200).send(randomDecision);
+  },
+
+  // goal feature
+  getGoals: (req, res) => res.status(200).send(goals),
+  deleteGoal: (req, res) => {
+    let i = goals.findIndex((elem) => elem.uniqueID === +req.params.uniqueID);
+    goals.splice(i, 1);
+    res.status(200).send(goals);
+  },
+  newGoal: (req, res) => {
+    let { uniqueID, scope, goal } = req.body;
+    let addedGoal = {
+      uniqueID: globalID,
+      scope,
+      goal,
+    };
+    goals.push(addedGoal);
+    res.status(200).send(goals);
   },
 };
