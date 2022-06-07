@@ -7,44 +7,39 @@
 </head>
 
 <body class="container">
-  <button id="complimentButton">Get a compliment</button>
-  <button id="fortuneButton">Pick a fortune</button>
+  <div id="serotonin-btns">
+    <h1>Productivity Toolbox</h1>
+    <h4>Get a boost!</h4>
+    <p>click one of these buttons for a production-boosting dose of serotonin! </p>
+    <button id="complimentButton">Get a compliment</button>
+    <button id="fortuneButton">Pick a fortune</button>
+  </div>
 
   <div id="decision-maker">
     <h4>Decision maker!</h4>
-    <p>Having a hard time making a decision? Ask the oracle a yes or no question!</p>
-    <p>(Disclaimer: You don't have to obey the
-      oracle perfectly, but if it makes a decision for you, and you find yourself disappointed, then it successfully
-      helped you make your decision!)
+    <p>Having a hard time making a decision? It's important you get unstuck so you don't waste too much time. Flip a
+      coin, then move forward without any doubts! Some decisions aren't better or worse than others, they're just
+      different.</p>
+    <p>(Disclaimer: <i>You don't have to do what the coin tells you!</i> If you feel disappointed about your result,
+      well, then you know what you really wanted, and the decision was still made!)
     </p>
-
-
-    <div id="goals">
-
-    </div>
-
-    <div class="box-canvas">
-      <div class="ruffle left"></div>
-      <div class="ruffle right"></div>
-      <div class="tabletop">
-
-      </div>
-      <div class="ball">
-      </div>
-      <div class="stand"></div>
-    </div>
+    <img src="https://i.groupme.com/256x256.png.339e6610f4464b3d8660c31961df0dc9" alt="8 bit coin">
     <div id="message"></div>
-    <button class="oracle-btn" onclick="askOracle()">Decide for me</button>
+    <button class="oracle-btn">Decide for me</button>
   </div>
   <div id="pomodoro-timer">
     <h4>Production timer</h4>
-    <p>This timer uses the Pomodoro technique to help you be productive. Focus on your work for 20 minutes, then take a
+    <p>This timer uses the Pomodoro technique to help you be productive. Focus on your work for 20 minutes, then take
+      a
       break for 10.</p>
     <button onclick="pomodoroWork(prodMins)">Start work session</button>
     <progress id="progress-bar-work" value="0" max="0" style="width:50%"></progress>
-    <button onclick="pomodoroRest(prodMins)">Take a break</button>
+    <button onclick="pomodoroRest(restMins)">Take a break</button>
     <progress id="progress-bar-rest" value="0" max="0" style="width:25%"></progress>
   </div>
+
+  <section id="goals-container">
+  </section>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="main.js"></script>
