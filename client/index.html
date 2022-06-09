@@ -4,6 +4,9 @@
 <head>
   <title>Back End Assessment</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css"
+    integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="container">
@@ -25,7 +28,7 @@
     </p>
     <img src="https://i.groupme.com/256x256.png.339e6610f4464b3d8660c31961df0dc9" alt="8 bit coin">
     <div id="message"></div>
-    <button class="oracle-btn">Decide for me</button>
+    <button class="coin-btn">Decide for me</button>
   </div>
   <div id="pomodoro-timer">
     <h4>Production timer</h4>
@@ -38,7 +41,21 @@
     <progress id="progress-bar-rest" value="0" max="0" style="width:25%"></progress>
   </div>
 
-  <section id="goals-container">
+  <section class="goals-feature">
+    <h4>Goals</h4>
+    <p>It's important to have short term, mid term, and long term goals! You can keep track of them here.</p>
+
+    <form>
+      Goal: <input type="text" class="goal-input">
+      Scope: <select id="scope-dropdown">
+        <option value="short">short</option>
+        <option value="mid">mid</option>
+        <option value="long">long</option>
+      </select>
+      <button class="new-goal" type="submit">Make new goal <i class="fa-solid fa-plus"></i></button>
+    </form>
+    <div id="goals-container">
+    </div>
   </section>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
