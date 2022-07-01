@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+
 const { getCompliment, getFortune, getDecision } = require("./controller");
 
 const app = express();

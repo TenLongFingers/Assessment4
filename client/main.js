@@ -1,7 +1,7 @@
 //Selectors
 const complimentBtn = document.getElementById("complimentButton");
 const fortuneBtn = document.getElementById("fortuneButton");
-const decisionBtn = document.getElementById("coin-btn");
+const coinBtn = document.getElementById("coin");
 const scopeSelect = document.getElementById("scope-dropdown");
 const goalsContainer = document.getElementById("goals-container");
 
@@ -21,39 +21,37 @@ const getFortune = () => {
   });
 };
 // decision maker.
-// !!Totally broken, still needs debugging
-// 6.2. Even more broken than it was yesterday. I'll come back to it, I still need to add in my goal board thing
 
 const flipCoin = () => {
-  axios.get("http://localhost:4000/api/fortune/").then((res) => {
-    const data = res.data;
-    alert(data);
+  axios.get("http://localhost:4000/api/decision/").then((res) => {
+    // clear previous message
+    let messageText = document.getElementById("decision");
+    if (messageText != null) {
+      messageText.parentNode.removeChild(messageText);
+    }
+
+    // coin animation
+    coinBtn.classList.add("coin-anim");
+    setTimeout(function () {
+      coinBtn.classList.remove("coin-anim");
+      //generate message
+      const data = res.data;
+      let parent = document.getElementById("decision-maker");
+      let newMessage = document.createElement("div");
+      newMessage.setAttribute("id", "decision");
+      newMessage.innerHTML = '"' + data + '"';
+      parent.appendChild(newMessage);
+    }, 1000);
   });
 };
-
-//   let messageText = document.getElementById("message");
-//   if (messageText != null) {
-//     messageText.parentNode.removeChild("message");
-//   }
-// };
-
-// const getDecision = () => {
-//   let decisions = decisionsArr[Math.floor(Math.random) * decisionsArr.length];
-//   let parent = document.getElementById("decision-maker");
-//   let newMessage = document.createElement("div");
-//   newMessage.setAttribute("id", "decision");
-//   newMessage.innerHTML = '"' + decisions + '"';
-//   parent.appendChild(newMessage);
-// };
 
 //event listeners
 complimentBtn.addEventListener("click", getCompliment);
 fortuneBtn.addEventListener("click", getFortune);
-decisionBtn.addEventListener("click", getCompliment);
+coinBtn.addEventListener("click", flipCoin);
 
 //Pomodoro timer code
 //I know it's super janky but I'm just so relieved I finally got it to work.
-//Edit: it stopped working. I don't know why.
 let seconds = 0;
 let prodMins = 20;
 let restMins = 10;
@@ -87,3 +85,28 @@ let pomodoroRest = (restMins) => {
 };
 
 //Goal board
+const goalsCallback = ({ data: goals }) => showGoals(goals);
+const errCallback = (err) => console.log(err);
+
+const fetchAllGoals = () =>
+  axios.get(baseURL).then(goalsCallback).catch(errCallback);
+const newGoal = (body) =>
+  axios.post(baseURL, body).then(goalsCallback).catch(errCallback);
+const deleteGoal = (uniqeID) =>
+  axios.delete(`${baseURL}/${uniqeID}`).then(goalsCallback).catch(errCallback);
+const updateGoal = (uniqeID, scope) =>
+  axios
+    .put(`${baseURL}/${uniqeID}`, scope)
+    .then(goalsCallback)
+    .catch(errCallback);
+
+const submitHandler = (e) => {
+  e.preventDefault();
+  let goal = document.querySelector("#goal");
+  let scope = document.querySelector("#scope");
+
+  let bodyObj = {
+    goal: goal.value,
+    scope: scope.value,
+  };
+};
