@@ -100,13 +100,9 @@ const updateGoal = (uniqeID, scope) =>
     .then(goalsCallback)
     .catch(errCallback);
 
+//putting the goals list in the html
+goalsContainer.innerHTML = fetchAllGoals();
 const submitHandler = (e) => {
   e.preventDefault();
   let goal = document.querySelector("#goal");
-  let scope = document.querySelector("#scope");
-
-  let bodyObj = {
-    goal: goal.value,
-    scope: scope.value,
-  };
 };
